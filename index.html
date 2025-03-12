@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & ML IV Semester Timetable</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="timetable-card">
+            <div class="header">
+                <div>
+                    <h1>AI & ML IV SEMESTER TIMETABLE</h1>
+                    <span class="subtitle">Academic Year 2024-2025</span>
+                </div>
+                <div class="button-group">
+                    <button onclick="toggleStats()" class="btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                        <span id="statsButtonText">Show Stats</span>
+                    </button>
+                    <button onclick="exportToPDF()" class="btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Export PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="timetable">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>9:30-11:00</th>
+                            <th>11:00-11:45</th>
+                            <th>11:45-12:30</th>
+                            <th>12:30-1:15</th>
+                            <th>1:15-1:45</th>
+                            <th>1:45-3:15</th>
+                            <th>3:15-4:00</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetableBody"></tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <p>* Lunch break is highlighted in yellow</p>
+                <p>Last updated: <span id="lastUpdated"></span></p>
+            </div>
+        </div>
+
+        <div class="professor-card">
+            <div class="professor-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <h2>Professor Details</h2>
+            </div>
+            <div class="table-container">
+                <table id="professorTable">
+                    <thead>
+                        <tr>
+                            <th>Professor Code</th>
+                            <th>Professor Name</th>
+                            <th>Subjects</th>
+                            <th>Total Hours</th>
+                            <th>Favorite</th>
+                        </tr>
+                    </thead>
+                    <tbody id="professorTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="stats" class="stats-container" style="display: none;">
+            <div class="stats-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+                <h2>Timetable Statistics</h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stats-card">
+                    <h3>Subject Distribution</h3>
+                    <canvas id="subjectPieChart"></canvas>
+                </div>
+                <div class="stats-card">
+                    <h3>Hours by Day</h3>
+                    <canvas id="dayBarChart"></canvas>
+                </div>
+                <div class="stats-card">
+                    <h3>Theory vs Lab Hours</h3>
+                    <canvas id="typesPieChart"></canvas>
+                </div>
+                <div class="stats-card">
+                    <h3>Professor Workload</h3>
+                    <canvas id="professorBarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
